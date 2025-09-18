@@ -1,1 +1,1 @@
-# zelda64-music-docs
+# Zelda64 Music Documentation
