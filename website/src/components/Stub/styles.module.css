@@ -1,0 +1,16 @@
+.stub {
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.stub hr {
+  border: none;
+  height: 0.125rem;
+  background-color: currentColor;
+  opacity: 0.5;
+  margin: 0.5rem 0;
+}
+
+.stub hr:last-of-type {
+    margin-bottom: 1.25rem;
+}

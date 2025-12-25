@@ -1,0 +1,7 @@
+label: "Instrument Banks"
+position: 4
+collapsible: true
+collapsed: false
+link:
+  type: "generated-index"
+  title: "Instrument Banks"

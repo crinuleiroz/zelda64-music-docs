@@ -1,0 +1,404 @@
+/**
+* Any CSS included here will be global. The classic template
+* bundles Infima by default. Infima is a CSS framework designed to
+* work well for content-centric websites.
+*/
+
+/* Import KaTeX*/
+@import "katex/dist/katex.min.css";
+
+:root {
+  --start-color: #FF3031;   /* Red Color */
+  --confirm-color: #1A69E4; /* Text Confirmation Color */
+  --a-color: #4B58FE;       /* A Button Icon Color */
+  --b-color: #3DFB44;       /* B Button Icon Color */
+  --c-color: #FFFF2F;       /* C Button Icon Color */
+  --z-color: #C5C4E0;       /* Z, L, R Button Icon Color */
+
+  /*
+   * Majora's Mask Dungeon Songs Color
+   */
+  --swamp-color: #73C148;    /* Sonata of Awakening */
+  --mountain-color: #D14E25; /* Goron Lullaby */
+  --ocean-color: #6591F0;    /* New Wave Bossa Nova */
+  --canyon-color: #D38706;   /* Elegy of Emptiness */
+  --oath-color: #D14DD1;     /* Oath to Order */
+}
+
+/* Light Theme */
+:root {
+  --ifm-color-primary: #2094f3;
+  --ifm-color-primary-dark: #1d84da;
+  --ifm-color-primary-darker: #1a75c2;
+  --ifm-color-primary-darkest: #175ca3;
+  --ifm-color-primary-light: #38a0f9;
+  --ifm-color-primary-lighter: #50adfc;
+  --ifm-color-primary-lightest: #8cc7ff;
+
+  --docusaurus-highlighted-code-line-bg: rgba(32, 148, 243, 0.1);
+
+  --ifm-navbar-background-color: #16191e;
+  --ifm-footer-background-color: #16191e;
+
+  /* --ifm-table-stripe-background: transparent; */
+
+  /* --ifm-dropdown-link-color: var(--ifm-color-gray-100); */
+}
+
+/* Dark Theme */
+html[data-theme='dark'] {
+  --ifm-color-primary: #a47bea;
+  --ifm-color-primary-dark: #8f69d1;
+  --ifm-color-primary-darker: #7b55c8;
+  --ifm-color-primary-darkest: #6742af;
+  --ifm-color-primary-light: #b592f0;
+  --ifm-color-primary-lighter: #c4a8f5;
+  --ifm-color-primary-lightest: #d7c4fa;
+
+  --docusaurus-highlighted-code-line-bg: #2977ff1a;
+
+  --ifm-navbar-background-color: #16191e;
+  --ifm-footer-background-color: #16191e;
+
+  /* --ifm-dropdown-link-color: var(--ifm-color-gray-100); */
+
+  --ifm-background-color: hsl(224, 15%, 14%);
+  --ifm-card-background-color: #20232c;
+  --ifm-table-border-color: hsla(257, 14%, 90%, 0.15);
+  --ifm-table-stripe-background: hsla(0, 0%, 100%, 0.02);
+  /* --ifm-table-stripe-background: transparent; */
+
+  /* --ifm-color-primary-contrast-foreground: #ffffff;
+  --ifm-color-primary-contrast-background: #4b3380;
+
+  --ifm-hover-overlay: rgba(255, 255, 255, 0.05);
+  --ifm-color-content: #e3e3e3;
+  --ifm-color-content-secondary: rgba(255, 255, 255, 0.8);
+  --ifm-background-color: #1b1b1d;
+  --ifm-background-surface-color: #242426; */
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/*
+ * Sidebar
+ */
+/* aside[class*='theme-doc-sidebar-container'] {
+  background-color: hsla(218, 15%, 10%, 1);
+  border: none;
+} */
+/* .theme-doc-sidebar-container {
+  background-color: hsla(218, 15%, 10%, 1);
+  border: none;
+} */
+
+/* .menu__link {
+  border-radius: 1rem;
+} */
+
+/*
+ * Navbar
+ */
+.navbar--dark {
+  --ifm-navbar-background-color: hsla(218, 15%, 10%, 1);
+}
+
+.footer--dark {
+  --ifm-footer-background-color: hsla(218, 15%, 10%, 1);
+}
+
+/*
+ * Tags
+ */
+/* a[class*='tagRegular'] {
+  border-radius: 1rem;
+} */
+
+/*
+ * Footer
+ */
+.footer__title, .footer__copyright {
+  color: rgb(90, 95, 115);
+  font-weight: 700;
+}
+
+.footer__copyright {
+  font-size: 0.8rem;
+}
+
+.footer__link-item {
+  color: rgb(125, 135, 150);
+  font-weight: 600;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-footer-link-hover-color);
+}
+
+/*
+ * Footnotes
+ */
+.footnotes > h2 {
+  display: none;
+}
+
+.footnotes::before {
+  content: '';
+  display: block;
+  border: none;
+  height: 0.0625rem;
+  background-color: hsla(0, 0%, 0%, 0.15);
+  margin-top: calc(var(--ifm-h2-vertical-rhythm-top) * var(--ifm-leading));
+  margin-bottom: calc(var(--ifm-heading-vertical-rhythm-bottom) * var(--ifm-leading));
+}
+
+.footnotes li {
+  color: hsla(0, 0%, 0%, 0.541);
+  font-size: 0.875rem;
+}
+
+html[data-theme='dark'] .footnotes::before {
+  background-color: hsla(225deg,15%,90%,0.5);
+}
+
+html[data-theme='dark'] .footnotes li {
+  color: hsla(225deg,15%,90%,0.5);
+}
+
+/* Target individual footnote items */
+/* .footnotes li {
+  margin-bottom: 0.5em;
+} */
+
+/*
+ * Pagination
+ */
+.pagination-nav {
+  gap: 1rem;
+  /* display: none; */
+}
+
+.pagination-nav__link {
+  color: var(--ifm-color-primary);
+  /* border-radius: 1.5rem; */
+  padding: 12px 24px 12px 18px;
+}
+
+.pagination-nav__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.pagination-nav__sublabel {
+  display: none;
+}
+
+/* Previous */
+.pagination-nav__link--prev .pagination-nav__label {
+  justify-content: flex-end;
+}
+
+.pagination-nav__link--prev .pagination-nav__label::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  transition: transform 0.3s ease-in-out;
+
+  background-color: var(--ifm-color-primary);
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20,12H4M4,12L10,18M4,12L10,6" stroke="black" stroke-width="1.5"></path></svg>');
+  mask: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20,12H4M4,12L10,18M4,12L10,6" stroke="black" stroke-width="1.5"></path></svg>');
+  left: 0;
+}
+
+.pagination-nav__link.pagination-nav__link--prev:hover .pagination-nav__label::before {
+  transform: translateX(-5px);
+}
+
+/* Next */
+.pagination-nav__link--next .pagination-nav__label {
+  justify-content: flex-start;
+}
+
+.pagination-nav__link--next .pagination-nav__label::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  transition: transform 0.3s ease-in-out;
+
+  background-color: var(--ifm-color-primary);
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4,12H20M20,12L14,6M20,12L14,18" stroke="black" stroke-width="1.5"></path></svg>');
+  mask: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4,12H20M20,12L14,6M20,12L14,18" stroke="black" stroke-width="1.5"></path></svg>');
+  right: 0;
+}
+
+.pagination-nav__link.pagination-nav__link--next:hover .pagination-nav__label::after {
+  transform: translateX(5px);
+}
+
+/*
+ * Themed Images
+ */
+html[data-theme='light'] img[src$='#gh-dark-mode-only'],
+html[data-theme='dark'] img[src$='#gh-light-mode-only'] {
+  display: none;
+}
+
+/*
+ * Sidebar
+ */
+.menu__list-item-collapsible {
+  font-weight: bold;
+}
+/*
+.theme-doc-sidebar-item-link-level-1 {
+    font-weight: bold;
+}
+*/
+
+/*
+ * Dropdown Menu
+ */
+html[data-theme='dark'] .dropdown__menu {
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-color-gray-100);
+}
+
+/*
+.dropdown__link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dropdown__link:active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+*/
+
+/*
+ * Accordions
+ */
+html[data-theme='dark'] .z64-details {
+  border: 1px solid hsla(225, 15%, 90%, 0.15); /* alt transparent */
+  background-color: hsla(227, 15%, 18%, 1);
+  --docusaurus-details-decoration-color: hsla(225, 15%, 90%, 0.5);
+}
+
+html[data-theme='dark'] .z64-details > summary {
+  font-weight: bold;
+  color: hsla(225, 15%, 90%, 0.82);
+}
+
+html[data-theme='light'] .z64-details {
+  border: 1px solid hsla(0, 0%, 0%, 0.15); /* alt transparent */
+  background-color: hsla(0, 0%, 96%);
+  --docusaurus-details-decoration-color: hsla(0, 0%, 0%, 0.5);
+}
+
+html[data-theme='light'] .z64-details > summary {
+  font-weight: bold;
+  color: hsla(0, 0%, 0%, 0.82);
+}
+
+/*
+ * Admonitions
+ */
+.alert {
+  border-width: 0;
+}
+
+.alert a:hover {
+  text-decoration: var(--ifm-link-hover-decoration);
+  text-decoration-thickness: 2px;
+}
+
+/*
+ * Code Blocks
+ */
+html[data-theme='light'] div[class*='codeBlockTitle'] {
+  background-color: hsla(225, 18%, 22%, 0.025);
+  border: none;
+}
+
+html[data-theme='dark'] div[class*='codeBlockTitle'] {
+  background-color: hsla(225, 18%, 22%, 1);
+  border: none;
+}
+
+/*
+ * Tables
+ */
+table td > p {
+  margin: 0 0 0;
+}
+
+/*
+ * Grid Cards
+ */
+.grid.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.grid.cards > .card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background-color: var(--ifm-card-background-color);
+  border-radius: var(--ifm-card-border-radius);
+  padding: 1.5rem !important;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 0.5rem; */
+}
+
+.card-header code + code {
+  margin-left: 0.4rem;
+}
+
+/* .card-header code {
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+} */
+
+.card-content {
+  flex: 1;
+  /* margin: auto; */
+  text-align: left;
+  /* margin: 0.75rem 0; */
+}
+
+.card-footer {
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+  align-items: center;
+}
+
+.card-download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1;
+}
+
+.card-download-link svg {
+  display: block;
+}
+
+.card-download-link:hover {
+  color: var(--ifm-color-primary-darker);
+}
+

@@ -1,0 +1,117 @@
+/*
+ * Splash Image
+ */
+.splash-parent {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.splash-logo {
+  position: relative;
+  width: 100%;
+  max-width: 87.5rem;
+}
+
+.splash-bg {
+  position: absolute;
+  width: 100%;
+  max-width: 87.5rem;
+}
+
+/*
+ * Animation Classes
+ */
+.animated-logo {
+  opacity: 0;
+  animation: growIn 1.5s forwards;
+  animation-delay: 1.5s;
+}
+
+.animated-bg {
+  opacity: 0;
+  animation: fadeIn-down 2s forwards;
+}
+
+.animated-home {
+  opacity: 0;
+  animation: fadeIn-up 1.5s forwards;
+  /* animation-delay: 2s; */
+}
+
+/*
+ * Post Animation Classes
+ */
+.post-anim {
+  opacity: 1 !important;
+  animation: none !important;
+}
+
+.fast-anim {
+  animation: fadeIn 1s ease-out forwards !important;
+}
+
+.fast-anim-delayed {
+  opacity: 0;
+  animation: growIn 1s ease-out forwards !important;
+  animation-delay: 0.5s !important;
+}
+
+/*
+ * Page Content
+ */
+.home-content {
+  max-width: 50rem;
+  /* max-width: 75%; */
+  margin: auto;
+  left: 50%;
+  /* margin: 2rem auto; */
+  /* font-size: 0.85rem; */
+  /* padding: 0 1rem; */
+  /* text-align: center; */
+}
+
+/*
+ * Animations
+ */
+@keyframes growIn {
+  0% {
+    transform: scale(0.98);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn-down {
+  0% {
+    transform: translateY(-0.5em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn-up {
+  0% {
+    transform: translateY(0.5em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}

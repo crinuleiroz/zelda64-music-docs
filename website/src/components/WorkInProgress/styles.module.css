@@ -1,0 +1,64 @@
+.sbubbleParent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  margin: var(--ifm-heading-margin-top) 0 var(--ifm-heading-margin-bottom) 0;
+  margin-bottom: calc(var(--ifm-h1-vertical-rhythm-bottom) * var(--ifm-leading));
+  border: 0.0625rem solid var(--ifm-color-emphasis-200);
+  border-radius: 0.4rem;
+  background-color: var(--ifm-card-background-color);
+  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.image {
+    width: 15%;
+    height: auto;
+}
+
+.sbubble {
+  position: relative;
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1.5em 1.5em;
+  font-family: "FOT-Chiaro Std", "Roboto", sans-serif;
+  font-size: 1.25rem;
+  color: #fff;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+}
+
+.arrow {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 85%;
+    right: 48%;
+    transform: translateX(-50%);
+    border: 0.5rem solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0.15rem;
+    animation: blink 2s infinite;
+}
+
+/* .sbubble::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 85%;
+  right: 48%;
+  border: .5rem solid transparent;
+  border-radius: .15rem;
+  animation: blink 2s infinite;
+} */
+
+@keyframes blink {
+  from, to { border-color: #417ee1}
+  50% { border-color: var(--confirm-color) }
+}
