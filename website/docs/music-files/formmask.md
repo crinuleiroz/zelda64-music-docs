@@ -276,7 +276,7 @@ Formmask creates a set of conditions that determine when sequence channels shoul
           The assigned channel will be enabled when it is daytime.
           </td>
           <td align="center">
-          —
+          2.0.0.0
           </td>
         </tr>
         <tr>
@@ -287,7 +287,7 @@ Formmask creates a set of conditions that determine when sequence channels shoul
           The assigned channel will be enabled when it is nighttime.
           </td>
           <td align="center">
-          —
+          2.0.0.0
           </td>
         </tr>
         <tr>
