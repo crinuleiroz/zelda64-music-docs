@@ -62,7 +62,7 @@ export default function Home() {
           <h1 style={{ textAlign: 'center'}}>Zelda64 Music Documentation</h1>
 
           <p>
-            A comprehensive resource detailing the audio systems in
+            A comprehensive resource detailing the audio systems in&nbsp;
             <em>Ocarina of Time</em> and <em>Majora&apos;s Mask</em>.
             It covers the structure and behavior of sequence data, instrument banks,
             audio samples, and more, along with supporting tools and guides for creating
