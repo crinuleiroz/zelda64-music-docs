@@ -6,6 +6,7 @@ import Details from '@theme/Details'
 import Stub from '@site/src/components/Stub';
 import WorkInProgress from '@site/src/components/WorkInProgress';
 import GridCard from '@site/src/components/GridCard';
+import DocCardList from '@theme/DocCardList';
 
 export default {
   ...MDXComponents,
@@ -16,4 +17,5 @@ export default {
   Stub,
   WorkInProgress,
   GridCard,
+  DocCardList,
 };
