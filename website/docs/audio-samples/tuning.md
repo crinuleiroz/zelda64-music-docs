@@ -3,8 +3,6 @@ title: "Tuning"
 tags: []
 ---
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"/>
-
 # Audio Sample Tuning
 
 ## Types of Tuning
@@ -150,8 +148,11 @@ This table outlines the variables used in the channel-based tuning formula to de
 | **Fine** | The pitch adjustment in cents. |
 | **Sample Rate** | The sample rate of the audio sample. |
 
-!!! info "How to Use This Formula"
+:::info[How to Use This Formula]
+
     This formula is used to correct the pitch of an audio sample. This ensures the sample plays at the expected pitch for every key in the corresponding key region.
+
+:::
 
 ### Key-based Tuning Formula
 To calculate the tuning value required for an audio sample assigned to a key-based instrument, use the following formula:
