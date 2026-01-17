@@ -5,6 +5,12 @@ tags: ["MMR"]
 
 # Formmask
 
+:::note
+
+    All information on this page pertaining to formmask format and location in a music file is only applicable to a currently unreleased fork of Majora's Mask Randomizer. All other data is applicable to all versions of Majora's Mask Randomizer unless otherwise specified.
+
+:::
+
 ## About
 Formmask is a Majora's Mask Randomizer feature that enables or disables specific sequence channels based on Link's current form or state. This allows for the creation of more dynamic audio sequences than is normally possible in the original game.
 
@@ -30,49 +36,57 @@ The term "form" refers to the different physical forms Link can take when the pl
 :::
 
 ## Using Formmask in Music Files
-To use the formmask feature for a music file, add a text file with the file extension `.formmask` to the root of the music file's archive.
+To use the formmask feature for a music file, add a `formmask` section to the 'metadata' dictionary in the music file's `.metadata` file.
 
-```title="MMR Music File"
-📂 ./
-├─ 📂 song.mmrs/
-│  ├─ 🎹 bank_id.seq
-│  ├─ 📄 categories.txt
-// highlight-next-line
-│  └─ 📄 bank_id.formmask
+```yaml {9-15}
+game: mm
+
+metadata:
+  display name: "Termina Field"
+  instrument set: 0x03
+  song type: bgm
+  music groups: [ Fields, TerminaField ]
+
+  formmask:
+    channels:
+      6: [ Human, FierceDeity ]
+      9: [ Human, FierceDeity ]
+    cumulative states: [
+      Night, Indoors, Combat, CriticalHealth
+    ]
 ```
 
-:::info[Formmask File Name]
-
-    The `.formmask` file must have the same name as the audio sequence file that uses it. This ensures the formmask feature is applied to the audio sequence in-game.
-
-:::
-
 ### Formmask Metadata Structure
-The `.formmask` file is a JSON array with 17 entries:
+The `formmask` field is a dictionary with 2 entries:
 
-- The first 16 entries correspond to the 16 audio sequence channels. Each value is a string representing a comma-separated list of conditions (states and forms) when the channel is enabled or disabled.
-- The final entry defines a string representing a comma-separated list of states that add to the set of enabled channels without disabling others.
+- The `channels` entry defines a dictionary of channels and conditions.
+    - Each key represents one of 16 corresponding audio sequence channels, with their names being the index of the channel.
+    - Each value represents a list of conditions (forms and states) that control when the channel is enabled or disabled.
+- The `cumulative states` entry defines a list of states that add to the set of enabled channels without disabling others.
 
-```json
-[
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Human,Deku,Goron,Zora,FierceDeity,All",
-  "Day,Night,Indoors,Outdoors,Cave,Swim,Combat,Epona,SpikeRolling,CriticalHealth"
-]
+```yaml
+formmask:
+  channels:
+    0:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    1:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    2:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    3:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    4:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    5:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    6:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    7:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    8:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    9:  [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    10: [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    11: [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    12: [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    13: [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    14: [ Human, Deku, Goron, Zora, FierceDeity, All ]
+    15: [ Human, Deku, Goron, Zora, FierceDeity, All ]
+  cumulative states: [
+    Day, Night, Indoors, Outdoors, Cave,
+    Swim, Combat, Epona, SpikeRolling, CriticalHealth
+  ]
 ```
 
 ### How Channels Are Enabled
@@ -94,26 +108,26 @@ Formmask creates a set of conditions that determine when sequence channels shoul
 <Tabs>
     <TabItem value="example-1" label="Example 1" default>
 
-    ```json
-    [
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "Swim",
-      "Swim",
-      "All",
-      "Combat",
-      "Combat",
-      "Combat",
-      "Swim",
-      "All",
-      "All",
-      "Epona,SpikeRolling"
-    ]
+    ```yaml
+    formmask:
+      channels:
+        0:  [ All ]
+        1:  [ All ]
+        2:  [ All ]
+        3:  [ All ]
+        4:  [ All ]
+        5:  [ All ]
+        6:  [ All ]
+        7:  [ Swim ]
+        8:  [ Swim ]
+        9:  [ All ]
+        10: [ Combat ]
+        11: [ Combat ]
+        12: [ Combat ]
+        13: [ Swim ]
+        14: [ All ]
+        15: [ All ]
+      cumulative states: [ Epona, SpikeRolling ]
     ```
 
     In this example:
@@ -127,26 +141,26 @@ Formmask creates a set of conditions that determine when sequence channels shoul
 
     <TabItem value="example-2" label="Example 2">
 
-    ```json
-    [
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "All",
-      "Swim",
-      "All",
-      "All,Combat",
-      "All",
-      "All",
-      "Epona,SpikeRolling,Combat"
-    ]
+    ```yaml
+    formmask:
+      channels:
+        0:  [ All ]
+        1:  [ All ]
+        2:  [ All ]
+        3:  [ All ]
+        4:  [ All ]
+        5:  [ All ]
+        6:  [ All ]
+        7:  [ All ]
+        8:  [ All ]
+        9:  [ All ]
+        10: [ All ]
+        11: [ Swim ]
+        12: [ All ]
+        13: [ All, Combat ]
+        14: [ All ]
+        15: [ All ]
+      cumulative states: [ Epona, SpikeRolling, Combat ]
     ```
 
     In this example:
@@ -168,7 +182,7 @@ Formmask creates a set of conditions that determine when sequence channels shoul
         <tr>
           <th>Form</th>
           <th>Description</th>
-          <th>Version Added</th>
+          <th>Version</th>
         </tr>
       </thead>
       <tbody>
@@ -250,7 +264,7 @@ Formmask creates a set of conditions that determine when sequence channels shoul
         <tr>
           <th>State</th>
           <th>Description</th>
-          <th>Version Added</th>
+          <th>Version</th>
         </tr>
       </thead>
       <tbody>

@@ -3,156 +3,184 @@ title: "Metadata"
 tags: ["OOTR", "MMR", "OOTMM"]
 ---
 
-# Music Metadata File
+# Music Metadata Files
 
 ## About
-`.metadata` files are YAML files with a custom extension. They define metadata for Ocarina of Time Randomizer (`.ootrs`) and Majora's Mask Randomizer (`.mmrs`) music files. They are required for these files to function.
+Ocarina of Time Randomizer (`.ootrs`) and Majora's Mask Randomizer (`.mmrs`) music files require specific metadata files to function. Ocarina of Time Randomizer uses a `.meta` file, while Majora's Mask Randomizer uses a `categories.txt` file.
 
-### YAML Value Types
-YAML treats most unquoted values as strings. A value is only interpresed as a different type if it matches one of YAML's built-in formats:
+## Meta File Structure
+Meta files determine how Ocarina of Time Randomizer handles a music file. It consists of multiple lines containing essential music data.
 
-<Tabs>
-    <TabItem value="int" label="Integers" default>
+<table>
+  <thead>
+    <tr>
+      <th>Line</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+      1
+      </td>
+      <td>
+      Cosmetic Name
+      </td>
+      <td>
+      The name displayed when the music file appears in-game.
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+      2
+      </td>
+      <td>
+      Instrument Set
+      </td>
+      <td>
+      The ID of the Ocarina of Time instrument bank in hexadecimal.
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+      3
+      </td>
+      <td>
+      Song Type
+      </td>
+      <td>
+      The music file's type. Must be either `bgm` or `fanfare`.
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+      4
+      </td>
+      <td>
+      Music Groups
+      </td>
+      <td>
+      See <a href="music-groups">Music Groups</a> for details.
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+      5+
+      </td>
+      <td>
+      Meta Commands
+      </td>
+      <td>
+      See <a href="#meta-commands">Meta Commands</a> for details.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    ```yaml
-    decimal:     64
-    hexadecimal: 0x40
-    octal:       0o100
-    ```
+:::warning[Line Requirements]
 
-    </TabItem>
+    Only lines 1 and 2 are required to be present in a `.meta` file in Ocarina of Time Randomizer. In the Ocarina of Time and Majora's Mask Combo Randomizer, lines 1, 2, and 3 are required.
 
-    <TabItem value="bool" label="Booleans">
+:::
 
-    ```yaml linenums="0"
-    booleans:
-    - true
-    - false
-    ```
+### Meta Commands
+Lines five and above for `.meta` files are for meta commands.
 
-    </TabItem>
+#### ZSOUND
+The `ZSOUND` meta command handles linking audio sample files to their corresponding audio sample structure in an instrument bank file.
 
-    <TabItem value="null" label="Null">
+<Tabs groupId="zsoundCommands">
+  <TabItem value="bank" label="Instrument Bank Linking" default>
 
-    ```yaml linenums="0"
-    null:
-    - ~
-    - null
-    ```
+  ```txt title="Format"
+  ZSOUND:type:index:alt:file
+  ```
 
-    </TabItem>
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+        type
+        </td>
+        <td>
+        The identifier for the audio sample's containing object, which must be `INST` for instruments, `DRUM` for drums, or `SFX` for sound effects.
+        </td>
+      </tr>
+      <tr>
+        <td>
+        index
+        </td>
+        <td>
+        The index of the instrument, drum, or sound effect in its corresponding list, specified in decimal.
+        </td>
+      </tr>
+      <tr>
+        <td>
+        alt
+        </td>
+        <td>
+        The key region for `INST` types, which must be `LOW`, `NORM`, or `HIGH`. Leave empty for drums and sound effects.
+        </td>
+      </tr>
+      <tr>
+        <td>
+        file
+        </td>
+        <td>
+        The name of the audio sample file with its file extension.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  </TabItem>
+
+  <TabItem value="tempAddress" label="Temp Address Linking">
+
+  ```txt title="Format"
+  ZSOUND:file:temp_address
+  ```
+
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+        file
+        </td>
+        <td>
+        The name of the audio sample file with its file extension.
+        </td>
+      </tr>
+      <tr>
+        <td>
+        temp_address
+        </td>
+        <td>
+        The temporary address of the audio sample in the music file's instrument bank, specified in hexadecimal.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  </TabItem>
 </Tabs>
 
-:::tip[YAML Formatting]
+## Categories File Structure
+Categories files determine the areas in-game a music file may appear in Majora's Mask Randomizer. It is a single-line text file containing a list of hexadecimal category values, separated by commas (`,`) or hyphens (`-`).
 
-    YAML is indentation-sensitive. Use spaces and maintain consistent indentation levels throughout the file.
-
-:::
-
-## Metadata File Structure
-Metadata files determine how Ocarina of Time Randomizer and Majora's Mask Randomizer handle a music file. They consist of a top-level `game` field and a `metadata` dictionary containing essential music data.
-
-Below are example `.metadata` files for both an Ocarina of Time Randomizer and Majora's Mask Randomizer music file.
-
-<Tabs groupId="randomizers">
-    <TabItem value="ootr" label="Ocarina of Time Randomizer" default>
-
-    ```yaml
-    game: oot
-
-    metadata:
-      display name: "Hyrule Field"
-      instrument set: 0x03
-      song type: bgm
-      music groups: [ Fields, HyruleField ]
-    ```
-
-    </TabItem>
-
-    <TabItem value="mmr" label="Majora's Mask Randomizer">
-
-    ```yaml
-    game: mm
-
-    metadata:
-      display name: "Termina Field"
-      instrument set: 0x03
-      song type: bgm
-      music groups: [ Fields, TerminaField ]
-    ```
-
-    </TabItem>
-</Tabs>
-
-### Game
-The `game` field is required and specifies which game the music file is for. It must be one of the following values:
-
-- `oot` — Uses Ocarina of Time data and is for Ocarina of Time Randomizer
-- `mm` — Uses Majora's Mask data and is for Majora's Mask Randomizer
-
-### Metadata
-The `metadata` field is a required dictionary and contains the core metadata of the music file. It can include the following fields:
-
-- `display name`
-- `instrument set`
-- `song type`
-- `music groups`
-- `audio samples`
-
-#### Display Name
-The `display name` field defines the name that displays in-game. This is purely cosmetic and does not affect song placement or behavior.
-
-:::warning[Songforce and Songtest Tokens]
-
-    In Majora's Mask Randomizer, the `songforce` and `songtest` tokens only work in the music file's filename. Including them in the display name has no effect.
-
-:::
-
-#### Instrument Set
-The `instrument set` field is required and specifies which instrument bank the music file uses. It must be one of the following values:
-
-- A decimal integer (e.g. `64`)
-- A hexadecimal integer (e.g. `0x40`)
-- The string `custom`
-
-:::tip[YAML Value Types]
-
-    For more information on YAML value types, see the [YAML Value Types](#yaml-value-types) section of this page.
-
-:::
-
-#### Song Type
-The `song type` field defines how the music file is used in-game. It should be included and must be one of the following values:
-
-- `bgm`
-- `fanfare`
-
-#### Music Groups
-The `music groups` field is a list that specifies where the music file can be placed in-game. It should be included and must be a list with at least one music group.
-
-:::tip[Available Music Groups]
-
-    For a full list of music groups available in Ocarina of Time Randomizer and Majora's Mask Randomizer, see the [Music Groups](#) page of the documentation.
-
-:::
-
-### Audio Samples
-The `audio samples` field is an optional dictionary in `metadata`. This dictionary defines the custom audio samples a music file uses. Each entry in the dictionary maps the custom audio sample to its corresponding sample structure in the music file's custom instrument bank.
-
-:::tip[Using the Audio Samples Dictionary]
-
-    For more details on how to structure and use the `audio samples` dictionary, see the [Audio Samples](#) page of the documentation.
-
-:::
-
-### Formmask
-The `formmask` field is an optional top-level dictionary that defines form- and state-specific behavior for sequence channels in Majora's Mask Randomizer. This dictionary contains 17 lists:
-
-- Lists 0 to 16 correspond to sequence channels
-- List 17 represents cumulative states
-
-:::tip[Using Formmask Data]
-
-    For details on how to structure and use the `formmask` dictionary, see the [Formmask](#) page of the documentation.
-
-:::
+```txt title="categories.txt"
+0,1,102,12F
+```

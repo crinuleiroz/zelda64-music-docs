@@ -240,7 +240,7 @@ const config: Config =
             {
               label: 'MIDI',
               type: 'doc',
-              docId: 'sysex',
+              docId: 'sysex/index',
               docsPluginId: 'midi',
             },
           ],
