@@ -148,7 +148,7 @@ This table outlines the variables used in the channel-based tuning formula to de
 | **Fine** | The pitch adjustment in cents. |
 | **Sample Rate** | The sample rate of the audio sample. |
 
-:::info[How to Use This Formula]
+:::info[Using the Formula]
 
     This formula is used to correct the pitch of an audio sample. This ensures the sample plays at the expected pitch for every key in the corresponding key region.
 
