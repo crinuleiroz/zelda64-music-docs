@@ -18,8 +18,38 @@ export default
   // MIDI Tab
   midiSidebar:
   [
-    'sysex',
-    'rpns',
+    {
+      label: 'SysEx Messages',
+      type: 'category',
+      link: {
+        type: 'doc',
+        id: 'sysex/index',
+      },
+      collapsible: true,
+      collapsed: false,
+      items:
+      [
+        'sysex/master-volume',
+        'sysex/master-fine-tune',
+        'sysex/master-coarse-tune',
+      ],
+    },
+    {
+      label: 'RPNs',
+      type: 'category',
+      link: {
+        type: 'doc',
+        id: 'rpns/index',
+      },
+      collapsible: true,
+      collapsed: false,
+      items:
+      [
+        'rpns/pitch-bend-sensitivity',
+        'rpns/channel-fine-tune',
+        'rpns/channel-coarse-tune',
+      ],
+    },
     'programs',
     'note-division',
     // {
